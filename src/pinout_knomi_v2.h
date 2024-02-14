@@ -6,29 +6,29 @@
 // common i2c
 #define I2C0_SUPPORT
 #define I2C0_SPEED   100000
-#define I2C0_SCL_PIN 1
-#define I2C0_SDA_PIN 2
+#define I2C0_SCL_PIN 7
+#define I2C0_SDA_PIN 6
 // #define I2C1_SPEED   100000
 // #define I2C1_SCL_PIN 3
 // #define I2C1_SDA_PIN 4
 
 // GC9A01 SPI TFT
 // #define GC9A01_MISO_PIN 13
-#define GC9A01_MOSI_PIN 14
-#define GC9A01_SCLK_PIN 18
-#define GC9A01_CS_PIN   20
-#define GC9A01_DC_PIN   19
-#define GC9A01_RST_PIN  21
+#define GC9A01_MOSI_PIN 11
+#define GC9A01_SCLK_PIN 10
+#define GC9A01_CS_PIN   9
+#define GC9A01_DC_PIN   8
+#define GC9A01_RST_PIN  14
 // PWM
-#define LCD_BL_PIN         12
+#define LCD_BL_PIN         2
 
 // CST816S Touch
 #define CST816S_SUPPORT
-#define CST816S_IRQ_PIN 17
-#define CST816S_RST_PIN 16
+#define CST816S_IRQ_PIN 5
+#define CST816S_RST_PIN 13
 
 // LIS2DW Accelerometer
-#define LIS2DW_SUPPORT
+//#define LIS2DW_SUPPORT
 
 // OV2640 Camera
 #define CAM_PWDN_PIN  10
