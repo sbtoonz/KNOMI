@@ -10,7 +10,7 @@ IMUdata acc;
 // Instantiate QMI8658C sensor
 extern TwoWire i2c0;
 SensorQMI8658 qmi8658c = SensorQMI8658();
-float qmi8658c_acc[3];
+int32_t qmi8658c_acc[3];
 
 // QMI8658C sensor task
 void qmi8658c_task(void * parameter) {
@@ -23,17 +23,17 @@ void qmi8658c_task(void * parameter) {
     }
     Serial.println("QMI8658C found!");
     Serial.println("\r\n******** QMI8658C init ok *****\r\n");
-    qmi8658c.configAccelerometer(SensorQMI8658::ACC_RANGE_4G, SensorQMI8658::ACC_ODR_1000Hz, SensorQMI8658::LPF_MODE_0, true);
-    qmi8658c.enableAccelerometer(); // Enable accelerometer
+    qmi8658c.configGyroscope(SensorQMI8658::GYR_RANGE_64DPS,SensorQMI8658::GYR_ODR_896_8Hz,SensorQMI8658::LPF_MODE_3,true);
+    qmi8658c.enableGyroscope();
 
     for (;;) {
 if (qmi8658c.getDataReady()) {
         // Get accelerometer data
-        if (qmi8658c.getAccelerometer(acc.x, acc.y, acc.z)) {
+        if (qmi8658c.getGyroscope(acc.x, acc.y, acc.z)) {
             // Store data in the array
             qmi8658c_acc[0] = acc.x;
-            qmi8658c_acc[1] = acc.y;
-            qmi8658c_acc[2] = acc.z;
+            qmi8658c_acc[1] = acc.z;
+            qmi8658c_acc[2] = acc.y;
         }
 #ifdef QMI8658C_DEBUG
         // Print out the raw data if debug mode is enabled

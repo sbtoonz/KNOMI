@@ -53,15 +53,6 @@ void setup() {
         NULL   // Task handle
         );
 #endif
-#ifdef LIS2DW_SUPPORT
-    xTaskCreate(lis2dw12_task, "lis2dw12",
-        4096,  // Stack size (bytes)
-        NULL,  // Parameter to pass
-        9,     // Task priority
-        NULL   // Task handle
-        );
-#endif
-
     xTaskCreate(wifi_task, "wifi",
         4096,  // Stack size (bytes)
         NULL,  // Parameter to pass

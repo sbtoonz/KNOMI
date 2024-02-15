@@ -51,29 +51,12 @@ void lv_loop_btn_event(void) {
         lv_test_sensor_btn_ok(NULL);
     }
 #endif
-
-#ifdef LIS2DW_SUPPORT
-    if(lv_scr_act() == ui_ScreenTestSensor) {
-        // accelerometer
-        lv_slider_set_value(ui_slider_acc_x, abs(lis2dw12_acc[0]) / 10, LV_ANIM_ON);
-        lv_slider_set_value(ui_slider_acc_y, abs(lis2dw12_acc[1]) / 10, LV_ANIM_ON);
-        lv_slider_set_value(ui_slider_acc_z, abs(lis2dw12_acc[2]) / 10, LV_ANIM_ON);
-
-        char buf[10];
-        snprintf(buf, sizeof(buf), "%d", lis2dw12_acc[0] / 100);
-        lv_label_set_text(ui_label_test_x, buf);
-        snprintf(buf, sizeof(buf), "%d", lis2dw12_acc[1] / 100);
-        lv_label_set_text(ui_label_test_y, buf);
-        snprintf(buf, sizeof(buf), "%d", lis2dw12_acc[2] / 100);
-        lv_label_set_text(ui_label_test_z, buf);
-    }
-#endif
 #ifdef QMI8658C_SUPPORT
 if(lv_scr_act() == ui_ScreenTestSensor) {
         // accelerometer
-        lv_slider_set_value(ui_slider_acc_x, abs(qmi8658c_acc[0]) / 10, LV_ANIM_ON);
-        lv_slider_set_value(ui_slider_acc_y, abs(qmi8658c_acc[1]) / 10, LV_ANIM_ON);
-        lv_slider_set_value(ui_slider_acc_z, abs(qmi8658c_acc[2]) / 10, LV_ANIM_ON);
+        lv_slider_set_value(ui_slider_acc_x, abs(qmi8658c_acc[0]), LV_ANIM_ON);
+        lv_slider_set_value(ui_slider_acc_y, abs(qmi8658c_acc[1]), LV_ANIM_ON);
+        lv_slider_set_value(ui_slider_acc_z, abs(qmi8658c_acc[2]), LV_ANIM_ON);
 
         char buf[10];
         snprintf(buf, sizeof(buf), "%d", qmi8658c_acc[0] / 100);
