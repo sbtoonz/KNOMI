@@ -1,6 +1,5 @@
 #ifndef PINOUT_KNOMI_V2_H
 #define PINOUT_KNOMI_V2_H
-
 #define BOOT_PIN     0
 
 // common i2c
@@ -29,6 +28,8 @@
 
 // LIS2DW Accelerometer
 //#define LIS2DW_SUPPORT
+#define QMI8658C_SUPPORT
+//#define QMI8658C_DEBUG
 
 // OV2640 Camera
 #define CAM_PWDN_PIN  10

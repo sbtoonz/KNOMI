@@ -68,6 +68,8 @@ typedef enum {
 wifi_status_t wifi_get_connect_status(void);
 
 extern int32_t lis2dw12_acc[3];
+extern int32_t qmi8658c_acc[3];
+
 
 // Macros for array numbers
 #define ACOUNT(n) (sizeof(n) / sizeof(n[0]))

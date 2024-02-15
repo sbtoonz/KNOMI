@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include <LIS2DW12Sensor.h>
 #include "pinout.h"
-
 #ifdef LIS2DW_SUPPORT
 
 // #define LIS2DW12_DEBUG

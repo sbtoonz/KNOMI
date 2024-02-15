@@ -1,7 +1,6 @@
 #include <Arduino.h>
 #include "lvgl_hal.h"
 #include "pinout.h"
-
 #include "ui/ui.h"
 
 
@@ -13,6 +12,7 @@ TwoWire i2c0 = TwoWire(0);
 
 void lvgl_ui_task(void * parameter);
 void lis2dw12_task(void * parameter);
+void qmi8658c_task(void* parameter);
 void wifi_task(void * parameter);
 void moonraker_task(void * parameter);
 void setup() {
@@ -45,7 +45,14 @@ void setup() {
         10,     // Task priority
         NULL   // Task handle
         );
-
+#ifdef QMI8658C_SUPPORT
+    xTaskCreate(qmi8658c_task, "qmi8658c",
+        4096,  // Stack size (bytes)
+        NULL,  // Parameter to pass
+        9,     // Task priority
+        NULL   // Task handle
+        );
+#endif
 #ifdef LIS2DW_SUPPORT
     xTaskCreate(lis2dw12_task, "lis2dw12",
         4096,  // Stack size (bytes)

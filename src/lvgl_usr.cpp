@@ -49,7 +49,7 @@ void lvgl_ui_task(void * parameter) {
     lvgl_hal_init();
     ui_init();
 
-#ifndef LIS2DW_SUPPORT
+#ifndef QMI8658C_SUPPORT
     // progress in center if no lis2dw accelerometer data to display
     lv_obj_set_y(ui_label_printing_progress, 0);
     lv_obj_set_align(ui_label_printing_progress, LV_ALIGN_CENTER);
