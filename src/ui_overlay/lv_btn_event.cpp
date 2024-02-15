@@ -54,9 +54,9 @@ void lv_loop_btn_event(void) {
 #ifdef QMI8658C_SUPPORT
 if(lv_scr_act() == ui_ScreenTestSensor) {
         // accelerometer
-        lv_slider_set_value(ui_slider_acc_x, abs(qmi8658c_acc[0]), LV_ANIM_ON);
-        lv_slider_set_value(ui_slider_acc_y, abs(qmi8658c_acc[1]), LV_ANIM_ON);
-        lv_slider_set_value(ui_slider_acc_z, abs(qmi8658c_acc[2]), LV_ANIM_ON);
+        lv_slider_set_value(ui_slider_acc_x, abs(qmi8658c_acc[0]) * 31.6227766, LV_ANIM_ON);
+        lv_slider_set_value(ui_slider_acc_y, abs(qmi8658c_acc[1]) * 31.6227766, LV_ANIM_ON);
+        lv_slider_set_value(ui_slider_acc_z, abs(qmi8658c_acc[2]) * 31.6227766, LV_ANIM_ON);
 
         char buf[10];
         snprintf(buf, sizeof(buf), "%d", qmi8658c_acc[0] / 100);
