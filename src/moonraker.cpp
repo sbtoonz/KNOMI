@@ -1,7 +1,7 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include "moonraker.h"
-#include "config.h"
+#include "knomi.h"
 
 // #define MOONRAKER_DEBUG
 
@@ -9,7 +9,8 @@ void lv_popup_warning(const char * warning, bool clickable);
 
 String MOONRAKER::send_request(const char * type, String path) {
     String ip = knomi_config.moonraker_ip;
-    String url = "http://" + ip + path;
+    String port = knomi_config.moonraker_port;
+    String url = "http://" + ip + ":" + port + path;
     String response = "";
     HTTPClient client;
     // replace all " " space to "%20" for http
@@ -117,8 +118,8 @@ void MOONRAKER::get_printer_info(void) {
         data.printing |= data.pause; // pause
         data.bed_actual = int16_t(json_parse["temperature"]["bed"]["actual"].as<double>() + 0.5f);
         data.bed_target = int16_t(json_parse["temperature"]["bed"]["target"].as<double>() + 0.5f);
-        data.nozzle_actual = int16_t(json_parse["temperature"]["tool0"]["actual"].as<double>() + 0.5f);
-        data.nozzle_target = int16_t(json_parse["temperature"]["tool0"]["target"].as<double>() + 0.5f);
+        data.nozzle_actual = int16_t(json_parse["temperature"][knomi_config.moonraker_tool]["actual"].as<double>() + 0.5f);
+        data.nozzle_target = int16_t(json_parse["temperature"][knomi_config.moonraker_tool]["target"].as<double>() + 0.5f);
 #ifdef MOONRAKER_DEBUG
         Serial.print("unoperational: ");
         Serial.println(unoperational);
@@ -158,7 +159,7 @@ void MOONRAKER::get_progress(void) {
         deserializeJson(json_parse, display_status);
         data.progress = (uint8_t)(json_parse["result"]["status"]["virtual_sdcard"]["progress"].as<double>() * 100 + 0.5f);
         String path = json_parse["result"]["status"]["virtual_sdcard"]["file_path"].as<String>();
-        strncpy(data.file_path, path_only_gcode(path.c_str()), sizeof(data.file_path) - 1);
+        strlcpy(data.file_path, path_only_gcode(path.c_str()), sizeof(data.file_path) - 1);
         data.file_path[sizeof(data.file_path) - 1] = 0;
 #ifdef MOONRAKER_DEBUG
         Serial.print("progress: ");

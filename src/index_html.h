@@ -3,13 +3,10 @@ const char index_html[] PROGMEM = R"rawliteral(<!DOCTYPE html>
 display: inline-block;
 text-align: center;">
 <head>
-  <!-- <link rel="stylesheet" type="text/css" href="test.css" /> -->
   <title>BTT KNOMI SETTINGS MANAGER</title>
   <link rel='shortcut icon' type='image/x-icon' href='/favicon.ico' />
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!--link rel="icon" href="data:,"-->
   <style>
-    /* body {background-color: powderblue;} */
     h1 {
       font-size: 1.8rem;
       color: white;
@@ -23,7 +20,7 @@ text-align: center;">
     }
     .topnav {
       overflow: hidden;
-      background-color: #c02f30;
+      background-color: #C02E2F;
     }
     body {
       margin: 0;
@@ -49,63 +46,47 @@ text-align: center;">
       display: flex;
       justify-content: center;
       align-items: center;
+      flex-direction: column;
     }
     .card-title {
       font-size: 1.2rem;
       font-weight: bold;
       color: #034078
     }
-    input[id="FWbtn"] {
+    input[id="sys-btn"] {
       border: none;
       color: #FEFCFB;
-      background-color: #c02f30;
       padding: 15px 15px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
-      width: 120px;
+      width: 230px;
+      height: 45;
       margin-right: 0px;
       margin-bottom: 0px;
-      border-radius: 4px;
+      border-radius: 5px;
       transition-duration: 0.4s;
     }
-    input[id="FWbtn"]:hover {
-      background-color: #EF2f30;
-    }
-    input[id="submitwifi"] {
+    input[id="submit-btn"] {
       border: none;
       color: #FEFCFB;
-      background-color: #c02f30;
+      background-color: #C02E2F;
       padding: 10px 10px;
       text-align: center;
       text-decoration: none;
       display: inline-block;
       font-size: 16px;
       width: 100px;
+      height: 45;
       margin-left: 20px;
       margin-right: 0px;
       margin-bottom: 0px;
-      border-radius: 4px;
+      border-radius: 5px;
       transition-duration: 0.4s;
     }
-    input[id="submitap"] {
-      border: none;
-      color: #FEFCFB;
-      background-color: #c02f30;
-      padding: 15px 15px;
-      text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 16px;
-      width: 200px;
-      margin-right: 0px;
-      margin-bottom: 1px;
-      border-radius: 4px;
-      transition-duration: 0.4s;
-    }
-    input[type=submit]:hover {
-      background-color: #EF2f30;
+    input[type=submit]:active {
+      opacity: 0.8;
     }
     p {
       display: flex;
@@ -119,7 +100,7 @@ text-align: center;">
       border: 1px solid #ccc;
       margin-right: 0px;
       margin-left: 0px;
-      border-radius: 4px;
+      border-radius: 5px;
       box-sizing: border-box;
       display: table-cell;
     }
@@ -127,12 +108,13 @@ text-align: center;">
       font-size: 1.2rem;
       text-align: center;
       padding: 10px;
+      display: flex;
     }
     .value{
       font-size: 1.2rem;
       color: #1282A2;
     }
-    .input-btn{
+    .refresh-btn{
       max-width: 800px;
       margin: 0 auto;
       position: relative;
@@ -142,11 +124,11 @@ text-align: center;">
       width: 100%;
       border: none;
       color: #FEFCFB;
-      background-color: #c02f30;
+      background-color: #C02E2F;
       text-align: center;
       text-decoration: none;
       font-size: 16px;
-      border-radius: 4px;
+      border-radius: 5px;
       transition-duration: 0.4s;
     };
     .state {
@@ -195,7 +177,7 @@ text-align: center;">
         text-align: center;
     }
     table th {
-        background-color: #c02f30;
+        background-color: #C02E2F;
         color: white;
     }
     tr:nth-child(even) {background-color: #f2f2f2;}
@@ -226,6 +208,7 @@ text-align: center;">
       color: #666;
       display: block;
       padding: 0 0 5px;
+      white-space: nowrap;
     }
     .modal_form {
       padding: 25px;
@@ -244,13 +227,13 @@ text-align: center;">
       width: 100%;
       padding: 10px;
       border: none;
-      background: #c02f30;
+      background: #C02E2F;
       font-size: 16px;
       font-weight: 400;
       color: #fff;
     }
-    button:hover {
-      background: #c02f30;
+    button:active {
+      opacity: 0.8;
     }
     .close {
       color: #aaa;
@@ -264,71 +247,15 @@ text-align: center;">
       text-decoration: none;
       cursor: pointer;
     }
-    button.button {
-      background: none;
-      border-top: none;
-      outline: none;
-      border-right: none;
-      border-left: none;
-      border-bottom: #02274a 1px solid;
-      padding: 0 0 3px 0;
-      font-size: 16px;
-      cursor: pointer;
-    }
-    button.button:hover {
-      border-bottom: #a99567 1px solid;
-      color: #a99567;
-    }
     .ant-form-item-row{
       display: flex;
       justify-content: center;
       align-items: center;
       margin: 20px 0;
     }
-  </style>
-  <style>
     body {
         padding: 0;
         margin: 0;
-    }
-    .dialog_outter {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-    }
-    .dialog_wrapper {
-        width: 400px;
-        background: #fff;
-        border: 1px solid #f0f0f0;
-        border-radius: 10px;
-        padding: 10px;
-        position: relative;
-        box-sizing: border-box;
-    }
-
-    .dialog_close_btn {
-        position: absolute;
-        right: 20px;
-        top: 10px;
-        cursor: pointer;
-    }
-
-    .dialog_title {
-        font-size: 18px;
-        font-weight: 500;
-        text-align: center;
-    }
-
-    .dialog_content {
-        padding: 20px;
-        box-sizing: border-box;
-        text-align: center;
-    }
-
-    .dialog_btn_group {
-        display: flex;
-        justify-content: flex-end;
     }
 
     .btn_confirm {
@@ -336,7 +263,7 @@ text-align: center;">
         color: #fff;
         padding: 5px 10px;
         border: 1px solid blue;
-        border-radius: 4px;
+        border-radius: 5px;
         margin-right: 10px;
         cursor: pointer;
     }
@@ -345,7 +272,7 @@ text-align: center;">
         background-color: #fff;
         padding: 5px 10px;
         border: 1px solid #000;
-        border-radius: 4px;
+        border-radius: 5px;
         margin-right: 10px;
         cursor: pointer;
     }
@@ -379,79 +306,175 @@ text-align: center;">
         display: none;
         position: absolute;
     }
+
+    #popup_id {
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        width: 100%;
+        height: 100%;
+        font-size: 16px;
+        background-color: rgba(0, 0, 0, 0.5);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr=#7f000000,endColorstr=#7f000000);
+        display: none;
+    }
+    .popup {
+        background-color: #ffffff;
+        max-width: 400px;
+        min-width: 200px;
+        height: auto;
+        border-radius: 5px;
+        margin: 100px auto;
+        text-align: center;
+    }
+    .popup_title {
+        height: 60px;
+        line-height: 60px;
+        border-bottom: solid 1px #cccccc;
+    }
+    .popup_content {
+        height: auto;
+        line-height: 25px;
+        padding: 15px 10px;
+        text-align: left;
+        color: #000000;
+    }
+    .popup_btn {
+        padding-bottom: 10px;
+    }
+    .popup_btn button {
+        color: #778899;
+        width: 40%;
+        height: 40px;
+        cursor: pointer;
+        border: solid 1px #cccccc;
+        border-radius: 5px;
+        margin: 5px 10px;
+        color: #ffffff;
+        background-color: #C02E2F;
+    }
 </style>
   <script>
-      function moveSSID(nname){
-          document.getElementById("ssid").value  = nname;
-      }
-      function validateForm() {
-        // let x = document.getElementById("ssid").value;
-        // if (x == "" || x == "empty") {
-        //   alert("You must enter a valid SSID.");
-        //   return false;
-        // }
-        // let y = document.getElementById("host").value;
-        // if (y == "") {
-        //   alert("You must enter a valid hostname.");
-        //   return false;
-        // }
-        // alert("The BTT KNOMI will now attempt to connect to the specified network.\n\nIf it fails after 15s then this access point will be re-launched and you can connect to it to try again.");
-        return true;
-      }
-      function validateModeForm() {
-        let z = document.getElementById("ap-ssid").value;
-        console.log(document.getElementById("ap-ssid").value)
-        if (z == "" || z == "empty") {
-          alert("You must enter a valid ap-ssid.");
-          return false;
+        var popup_clicked = false;
+        var popup_btn = false;
+        async function waitPopupBtn(){
+            await new Promise( (resolve) =>{
+                let timer = setInterval(() =>{
+                    if(popup_clicked){
+                        clearInterval(timer)
+                        resolve(true)
+                    }
+                },100)
+            })
+            var popup_id = document.getElementById("popup_id");
+            popup_id.style.display = "none";
+            return Promise.resolve(true)
         }
-        let v = document.getElementById("ap-PWD").value;
-        if (v == "Mode: Forced access point scanning")
-        if (v == "" || v == "empty") {
-          alert("You must enter a valid ap-ssid.");
-          return false;
+        async function showPopupKlipper(){
+            popup_clicked = false;
+            popup_btn = false;
+            var ip = document.getElementById("ip").value;
+            var port = document.getElementById("port").value;
+            var tool = document.getElementById("tool").value;
+            document.getElementById("popup_title_id").innerHTML="Klipper Config";
+            document.getElementById("popup_content_id").innerHTML="<div>" + "Klipper IP: "+ "<font color='#C02E2F'>" + ip + "</font><br>"
+                                                                + "Klipper Port: " + "<font color='#C02E2F'>" + port + "</font><br>"
+                                                                + "Tool ID: " + "<font color='#C02E2F'>" + tool + "</font><br></div>";
+
+            var popup_id = document.getElementById("popup_id");
+            popup_id.style.display = "block";
+            await waitPopupBtn();
+            if (popup_btn) {
+                document.getElementById('klipper-form').submit();
+            }
+            return popup_btn;
         }
-        return true
-        // return confirm("This will disconnect you from the current access point and allow you to scan for WiFi networks.\n\nTo get back into normal mode you'll need to enter and submit WiFi credentials.\n\nWould you like to proceed?");
-			}
-      function validateRestartForm(){
-        alert("KNOMI will disconnect the network connection and restart\n\nPlease reconnect after KNOMI restart");
-        return true
-      }
-      function togglePassFunction()
-      {
-        var x = document.getElementById("pass");
-        if (x.type === "password") {
-          x.type = "text";
-        } else {
-          x.type = "password";
+        async function showPopupKnomi(){
+            popup_clicked = false;
+            popup_btn = false;
+            var obj_mode = document.getElementById("mode");
+            var mode = obj_mode.options[obj_mode.selectedIndex].text;
+            var ssid = document.getElementById("ap-ssid").value;
+            var pwd = document.getElementById("ap-pwd").value;
+            var name = document.getElementById("hostname").value;
+            document.getElementById("popup_title_id").innerHTML="KNOMI Config";
+            document.getElementById("popup_content_id").innerHTML="<div>" + "WiFi mode: "+ "<font color='#C02E2F'>" + mode + "</font><br>"
+                                                                + "AP SSID: " + "<font color='#C02E2F'>" + ssid + "</font><br>"
+                                                                + "AP PWD: " + "<font color='#C02E2F'>" + pwd + "</font><br>"
+                                                                + "Hostname: " + "<font color='#C02E2F'>" + name + "</font><br></div>";
+
+            var popup_id = document.getElementById("popup_id");
+            popup_id.style.display = "block";
+            await waitPopupBtn();
+            if (popup_btn) {
+                document.getElementById('knomi-form').submit();
+            }
+            return popup_btn;
         }
-      }
+        async function showPopupRestart(){
+            popup_clicked = false;
+            popup_btn = false;
+            document.getElementById("popup_title_id").innerHTML="Restart?";
+            document.getElementById("popup_content_id").innerHTML="KNOMI will disconnect the network connection and restart<br>Please reconnect after KNOMI restart."
+
+            var popup_id = document.getElementById("popup_id");
+            popup_id.style.display = "block";
+            await waitPopupBtn();
+            if (popup_btn) {
+                document.getElementById('restart-form').submit();
+            }
+            return popup_btn;
+        }
+        function popupConfirm(){
+            popup_clicked = true;
+            popup_btn = true;
+        }
+        function popupCancel(){
+            popup_clicked = true;
+            popup_btn = false;
+        }
   </script>
 </head>
 <body>
   <div class="topnav">
-    <h1>BTT KNOMI SETTINGS MANAGER</h1>
-    <h2>*Refresh to update wifi network list</h2>
-  </div>
-  <div id="modalOne" class="modal">
-    <div class="modal-content">
-      <div class="contact-form">
-        <a class="close">&times;</a>
-        <form class="modal_form" action="/" method="POST" onsubmit="return validateForm()">
-          <!-- <h2 id ="ssid">Contact Us</h2> -->
-          <div>
-            <input readonly id ="ssid" class="fname" type="text" name="ssid" placeholder="ssid" />
-            <span></span>
-            <input class="fname" type="text" name="password" placeholder="password" />
-            <span></span>
-          </div>
-          <button type="submit" >Connect</button>
-        </form>
-      </div>
-    </div>
+    <h1>BTT KNOMI SETTINGS MANAGER ;)</h1>
   </div>
   <div class="content">
+    <div class="card-grid">
+      <div class="card">
+        <form id="klipper-form" name="klipper-form" action="/" method="POST">
+            <label class="ant-form-item-row">
+                <span>Klipper IP:&nbsp</span>
+                <input type="text" id ="ip" name="ip" $ip$ maxlength="64" placeholder="1.2.3.4 or printer.local">
+            </label>
+            <label class="ant-form-item-row">
+                <span>Klipper Port:&nbsp</span>
+                <input type="text" id ="port" name="port" $port$ maxlength="5">
+            </label>
+            <label class="ant-form-item-row">
+                <span>Tool ID:&nbsp</span>
+                <input type="text" id ="tool" name="tool" $tool$ maxlength="6">
+            </label>
+        </form>
+        <input type ="submit" id="submit-btn" value ="Submit" onclick="showPopupKlipper()">
+      </div>
+    </div>
+    <div id="modalOne" class="modal">
+      <div class="modal-content">
+        <div class="contact-form">
+          <a class="close">&times;</a>
+          <form class="modal_form" action="/" method="POST">
+            <div>
+              <input readonly id ="ssid" class="fname" type="text" name="ssid" placeholder="ssid" />
+              <span></span>
+              <input class="fname" type="text" name="password" placeholder="password" />
+              <span></span>
+            </div>
+            <button type="submit" >Connect</button>
+          </form>
+        </div>
+      </div>
+    </div>
     <div class="table-container">
       <table>
         <thead>
@@ -466,66 +489,56 @@ text-align: center;">
         </tbody>
       </table>
     </div>
-    <div class="card-grid">
-      <form name="refresh" action="/" method="POST">
-        <input type ="submit" class="input-btn" name="refresh" value ="Refresh">
-      </form>
-    </div>
-    <div class="card-grid">
-      <div class="card">
-        <form name="wifidata" action="/" method="POST">
-          <div class="ant-form-item-row">
-            <div class="ant-form-item-label" for="hostname">Hostname:</div>
-            <div class="ant-form-item-control">
-              <input type="text" id ="hostname" name="hostname" $hostname$ maxlength="15"><br>
-            </div>
-            <input type ="submit" id="submitwifi" value ="Submit">
-          </div>
-          <div class="ant-form-item-row">
-            <div class="ant-form-item-label" for="host">&nbsp Klipper IP:</div>
-            <div class="ant-form-item-control">
-              <input type="text" id ="klipper" name="klipper" $klipper$ maxlength="64" placeholder="1.2.3.4 or printer.local"><br>
-            </div>
-            <input type ="submit" id="submitwifi" value ="Submit">
-          </div>
-        </form>
-      </div>
-    </div>
+    <form name="refresh" action="/" method="POST">
+      <input type ="submit" class="refresh-btn" name="refresh" value="Refresh">
+    </form>
+
     <div class="card-grid">
       <div class="card">
-        <form name="wifimode" action="/" method="POST" onsubmit="return validateModeForm()">
-          <select name="mode">
+        <form id="knomi-form" name="knomi-form" action="/" method="POST">
+          <select id ="mode" name="mode">
             <option value="ap" $ap$>AP</option>
             <option value="sta" $sta$>STA</option>
-            <option value="apsta" $apsta$>AP+STA</option>          <!--selected默认选择-->
+            <option value="apsta" $apsta$>AP+STA</option>
           </select>
-          <div class="ant-form-item-row">
-            <div class="ant-form-item-label" for="ap_ssid">AP-SSID:</div>
-            <div class="ant-form-item-control">
-              <input type="text" id ="ap-ssid" name="ap_ssid" $ap_ssid$ minlength="1" maxlength="32"><br>
-            </div>
-          </div>
-          <div class="ant-form-item-row">
-            <div class="ant-form-item-label" for="ap_password">AP-PWD:</div>
-            <div class="ant-form-item-control">
-              <input type="text" id ="ap-PWD" name="ap_password" $ap_password$  minlength="6"  maxlength="64"><br>
-            </div>
-          </div>
-          <input type ="submit" id="submitwifi" value ="Submit">
+          <label class="ant-form-item-row">
+              <span>AP SSID:&nbsp</span>
+              <input type="text" id ="ap-ssid" name="ap_ssid" $ap_ssid$ minlength="1" maxlength="32" required="required">
+          </label>
+          <label class="ant-form-item-row">
+              <span>AP PWD:&nbsp</span>
+              <input type="text" id ="ap-pwd" name="ap_password" $ap_password$ minlength="6" maxlength="64">
+          </label>
+          <label class="ant-form-item-row">
+              <span>Hostname:&nbsp</span>
+              <input type="text" id ="hostname" name="hostname" $hostname$ maxlength="15">
+          </label>
         </form>
+        <input type ="submit" id="submit-btn" value ="Submit" onclick="showPopupKnomi()">
       </div>
     </div>
     <div class="card-grid">
       <div class="card">
-         <!-- <br><label id="FIRMWARE">Firmware</label><br><br><br> -->
-        <a href="update"><input type="button" id="FWbtn" value ="Update FW"></a>
+        <a href="update"><input type="submit" style="background-color: #C02E2F" id="sys-btn" value ="Update Firmware"></a>
         <span style="width: 10px;"></span>
-        <form name="Restart" action="/" method="POST" onsubmit="return validateRestartForm()">
-          <input type ="submit" id="FWbtn" name="restart" value="Restart">
+        <form id="restart-form" name="restart-form" action="/" method="POST">
+            <input type="hidden" name="restart">
         </form>
+        <input type ="submit" style="background-color: #000000" id="sys-btn" value="Restart" onclick="showPopupRestart()">
+      </div>
+    </div>
+    <div id="popup_id">
+      <div class="popup">
+        <p id="popup_title_id" class="popup_title"></p>
+        <p id="popup_content_id" class="popup_content"></p>
+        <div class="popup_btn">
+          <button style="background-color: #525252" onclick="popupCancel()">Cancel</button>
+          <button onclick="popupConfirm()">Confirm</button>
+        </div>
       </div>
     </div>
   </div>
+
   <script>
     let modalBtns = [...document.querySelectorAll(".showpop")];
     modalBtns.forEach(function (btn, index) {
@@ -533,7 +546,7 @@ text-align: center;">
         let modal = btn.getAttribute("data-modal");
         document.getElementById(modal).style.display = "block";
         console.log(modalBtns[index].getElementsByClassName("ssid")[0].innerHTML,document.getElementById("ssid"))
-        document.getElementById("ssid").value  = modalBtns[index].getElementsByClassName("ssid")[0].innerHTML;
+        document.getElementById("ssid").value = modalBtns[index].getElementsByClassName("ssid")[0].innerHTML;
       };
     });
     let closeBtns = [...document.querySelectorAll(".close")];
