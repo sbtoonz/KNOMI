@@ -34,8 +34,8 @@ if (qmi8658c.getDataReady()) {
         if (qmi8658c.getAccelerometer(acc.x, acc.y, acc.z)) {
             // Store data in the array
             qmi8658c_acc[0] = acc.z;
-            qmi8658c_acc[1] = acc.x;
-            qmi8658c_acc[2] = acc.y;
+            qmi8658c_acc[1] = acc.y;
+            qmi8658c_acc[2] = acc.x;
         }
 #ifdef QMI8658C_DEBUG
         // Print out the raw data if debug mode is enabled

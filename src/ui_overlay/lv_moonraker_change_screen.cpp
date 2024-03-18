@@ -242,9 +242,9 @@ void lv_loop_moonraker_change_screen_value(void) {
     }
 #ifdef QMI8658C_SUPPORT
     // accelerometer
-    lv_slider_set_value(ui_slider_printing_acc_x, abs(qmi8658c_acc[0]) * 31.6227766, LV_ANIM_ON);
-    lv_slider_set_value(ui_slider_printing_acc_y, abs(qmi8658c_acc[1]) * 31.6227766, LV_ANIM_ON);
-    lv_slider_set_value(ui_slider_printing_acc_z, abs(qmi8658c_acc[2]) * 31.6227766, LV_ANIM_ON); // +980 for counteract the value of gravitational acceleration
+    lv_slider_set_value(ui_slider_printing_acc_x, abs(qmi8658c_acc[0]) * 10, LV_ANIM_ON);
+    lv_slider_set_value(ui_slider_printing_acc_y, abs(qmi8658c_acc[1]) * 10, LV_ANIM_ON);
+    lv_slider_set_value(ui_slider_printing_acc_z, abs(qmi8658c_acc[2]) * 10, LV_ANIM_ON); // +980 for counteract the value of gravitational acceleration
 #endif
 
     if ((moonraker.data.nozzle_target != 0) && (lv_scr_act() == ui_ScreenHeatingNozzle)) {
